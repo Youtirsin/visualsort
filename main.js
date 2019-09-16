@@ -16,8 +16,13 @@ function get_scale(){
     for (var i = 0; i < value.length; i++) {
         nums.push(value[i] - 0);
     }
-    nums.sort();
-    return 500/nums[nums.length-1];
+    var max=nums[0];
+    for(var i=1;i<nums.length;i++){
+        if(nums[i]>max){
+            max=nums[i];
+        }
+    }
+    return 500/max;
 };
 
 function main() {
@@ -26,6 +31,7 @@ function main() {
     for (var i = 0; i < value.length; i++) {
         nums.push(value[i] - 0);
     }
+    
     $('#container').html('');
     for (var i = 0; i < nums.length; i++) {
         $('#container').append('<div>' + nums[i] + '</div>');
