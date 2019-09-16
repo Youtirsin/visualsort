@@ -16,12 +16,10 @@ function get_scale(){
     for (var i = 0; i < value.length; i++) {
         nums.push(value[i] - 0);
     }
-    var max=nums[0];
-    for(var i=1;i<nums.length;i++){
-        if(nums[i]>max){
-            max=nums[i];
-        }
-    }
+    nums.sort(function(a,b){
+        return a-b;
+    });
+    var max=nums[nums.length-1];
     return 500/max;
 };
 
@@ -54,7 +52,11 @@ function sort_() {
     for(var i=0;i<nums.length;i++){
         sorted_nums.push(nums[i]);
     }
-    sorted_nums.sort();
+    sorted_nums.sort(function(a,b){
+        return a-b;
+    });
+    console.log(sorted_nums);
+    
     for(var i=0;i<nums.length;i++){
         if(sorted_nums[i]!=nums[i]){
             transform_(i,sorted_nums[i]);
